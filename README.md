@@ -4,4 +4,4 @@ Este repositório contém os códigos para implementação do jogo (senha)[https
 
 # Autores
 
-David, Seth Ribeiro e Matheus Cardoso.
+David Albuquerque, Seth Ribeiro e Matheus Cardoso.
