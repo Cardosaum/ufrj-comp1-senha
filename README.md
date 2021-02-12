@@ -1,6 +1,6 @@
 # Senha
 
-Este repositório contém os códigos para implementação do jogo (senha)[https://pt.wikihow.com/Jogar-Senha].
+Este repositório contém os códigos para implementação do jogo [senha](https://pt.wikihow.com/Jogar-Senha).
 
 # Autores
 
