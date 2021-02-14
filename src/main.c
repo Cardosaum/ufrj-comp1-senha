@@ -7,9 +7,15 @@
  */
 
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include "game.h"
+#include "interface.h"
 
 int main(int argc, char *argv[]) {
     
+    srand(time(NULL)); /* Should be called ONCE per program. */
+
     return 0;
 }
 

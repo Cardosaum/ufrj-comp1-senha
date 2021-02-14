@@ -1,3 +1,8 @@
+#ifndef INTERFACE_H
+#define INTERFACE_H
+
+#include "structures.h"
+
 #define KNRM "\x1B[0m"
 #define KRED "\x1B[31m"
 #define KGRN "\x1B[32m"
@@ -20,7 +25,7 @@ void choose_menu_option();
 /**
  * Show the entire board of the current game.
  */
-void show_board();
+void show_board(Board board);
 
 /**
  * Show the instructions. How to play the game.
@@ -37,5 +42,9 @@ void exit_game();
  */
 void clear_screen();
 
+/**
+ * Prints the ASCII Mastermind game art.
+ */
+void print_logo();
 
-
+#endif

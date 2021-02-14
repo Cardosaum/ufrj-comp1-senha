@@ -1,7 +1,12 @@
+#ifndef GAME_H
+#define GAME_H
+
+#include "structures.h"
+
 /**
  * Generates the secret password for the game.
  */
-void generate_password();
+Password generate_password();
 
 /**
  * Gets and validates the player's input password.
@@ -23,6 +28,6 @@ void check_tries();
  */
 void finish_game();
 
-
+#endif
 
 
