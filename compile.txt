@@ -1,1 +1,1 @@
-gcc -o buildmain src/main.c src/interface.c src/game.c -pedantic -Wall -ansi -I .
+gcc -o build/main src/main.c src/interface.c src/game.c -pedantic -Wall -ansi -I .
