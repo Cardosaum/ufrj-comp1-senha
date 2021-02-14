@@ -20,10 +20,14 @@ jobs:
     name: Notify via Telegram
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
+      - name: Run success
+        run: exit 0
       - name: Send message to Telegram
-        uses: Lukasss93/telegram-action@v1
+        uses: Lukasss93/telegram-action@master
+        if: always()
         env:
           TELEGRAM_TOKEN: '1618782403:AAFNEzf4aDR75VTwSpXjg2m_E2p4vf7nzFQ'
           TELEGRAM_CHAT: '@senhanotifications'
         with: 
-          STATUS: ${{job.status}} # Required for accessing the status of certain job
+          STATUS: ${{ job.status }} # Required for accessing the status of certain job
