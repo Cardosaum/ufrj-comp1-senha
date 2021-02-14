@@ -35,14 +35,14 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           
-      - name: Notify Telegram
-      # You may pin to the exact commit or the version.
-      # uses: yanzay/notify-telegram@1025564e15f68b2fcddeba37b5bfaf4033c79448
-        uses: yanzay/notify-telegram@v0.1.0
-        with:
-          # Chat to send: chat id or @channel_name
-          chat: '@senhanotifications'
-          # Telegram Bot token
-          token: '1618782403:AAFNEzf4aDR75VTwSpXjg2m_E2p4vf7nzFQ'
-          # Job status
-          status: ${{ job.status }}
+  notify:
+    name: Notify via Telegram
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send message to Telegram
+        uses: Lukasss93/telegram-action@v1
+        env:
+          TELEGRAM_TOKEN: '1618782403:AAFNEzf4aDR75VTwSpXjg2m_E2p4vf7nzFQ'
+          TELEGRAM_CHAT: '@senhanotifications'
+        with: 
+          STATUS: ${{job.status}} # Required for accessing the status of certain job
