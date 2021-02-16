@@ -5,15 +5,17 @@
 
 void show_menu()
 {
+    printf("---------------------\n");
     printf("1. Play\n");
     printf("2. Instructions\n");
     printf("3. Configurations\n");
     printf("4. Exit\n");
+    printf("---------------------\n");
 }
 
 void show_board(Board board)
 {
-
+    
 }
 
 void clear_screen()

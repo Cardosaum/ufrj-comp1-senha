@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include <string.h>
 #include "game.h"
 
 Password generate_password(int upper_limit, int lower_limit)
@@ -26,4 +27,35 @@ Password generate_password(int upper_limit, int lower_limit)
     }
 
     return password;
+}
+
+void input_password(Guess *player_guess, int pos)
+{    
+    char password[5];
+    printf("Enters the password guess:\n");
+    fgets(password, 4, stdin);
+    check_password(password);
+
+}
+
+int check_password(const char *password)
+{
+    /**
+     * Returns 0 if the password is valid. Returns 1 if there is some error in the input password.
+     */ 
+     
+
+    int valid_password = 0;
+    int length = strlen(password);
+    if(!(length == 4))
+        valid_password = 1;
+
+    /**
+     * TODO: Check password letters. (R,Y,B,...)
+     */
+    
+    if(valid_password)
+        return 0;
+    else
+        return 1;
 }

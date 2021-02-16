@@ -16,7 +16,7 @@ void input_password();
 /**
  * Checks the player's input password against the secret password.  
  */
-void check_password();
+int check_password();
 
 /**
  * Check if the player still have any tries in the current game.
