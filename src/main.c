@@ -16,6 +16,10 @@ int main(int argc, char *argv[]) {
     
     srand(time(NULL)); /* Should be called ONCE per program. */
 
+    clear_screen();
+    print_logo();
+    show_menu();
+
     return 0;
 }
 
