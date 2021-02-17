@@ -1,7 +1,6 @@
 #ifndef GAME_H
 #define GAME_H
-
-#include "structures.h"
+#include "defs.h"
 
 /**
  * Generates the secret password for the game.

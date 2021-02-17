@@ -1,7 +1,7 @@
 #ifndef INTERFACE_H
 #define INTERFACE_H
 
-#include "structures.h"
+#include "defs.h"
 
 /* Code for terminal colors */
 #define KNIL "\x1B[0m"  /* NULL    */
