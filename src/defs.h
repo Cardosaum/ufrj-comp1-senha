@@ -2,7 +2,7 @@
 #define STRUCTURES_H
 
 typedef struct Guess {
-    int player_guess[4];
+    Password player_password;
     int feedback[4];
 } Guess;
 

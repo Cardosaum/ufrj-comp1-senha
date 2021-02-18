@@ -2,6 +2,7 @@
 #include <time.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdbool.h>
 #include "game.h"
 
 Password generate_password(int upper_limit, int lower_limit)
@@ -29,23 +30,29 @@ Password generate_password(int upper_limit, int lower_limit)
     return password;
 }
 
-void input_password(Guess *player_guess, int pos)
-{    
+bool input_password(Guess *player_guess, int pos)
+{   
+    printf("=====IN INPUT_PASSWORD FUNCTION====="); 
     char password[5];
     printf("Enters the password guess:\n");
     fgets(password, 4, stdin);
-    check_password(password);
+    if(check_password(password))
+    {
+        player_guess->player_password->password = password;
+    }
+    else
+    {
+        printf("Please, enter the password in a valid format.\n"); /* TODO Detail to the user the correct input format */
+        return false;
+    }
 
+    return true;
 }
 
-int check_password(const char *password)
+bool check_password(const char *password)
 {
-    /**
-     * Returns 0 if the password is valid. Returns 1 if there is some error in the input password.
-     */ 
-     
+    printf("=====IN CHECK_PASSWORD FUNCTION=====");
 
-    int valid_password = 0;
     int length = strlen(password);
     if(!(length == 4))
         valid_password = 1;
@@ -55,7 +62,7 @@ int check_password(const char *password)
      */
     
     if(valid_password)
-        return 0;
+        return true;
     else
-        return 1;
+        return false;
 }
