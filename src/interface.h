@@ -1,16 +1,19 @@
 #ifndef INTERFACE_H
 #define INTERFACE_H
 
-#include "structures.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "defs.h"
 
-#define KNRM "\x1B[0m"
-#define KRED "\x1B[31m"
-#define KGRN "\x1B[32m"
-#define KYEL "\x1B[33m"
-#define KBLU "\x1B[34m"
-#define KMAG "\x1B[35m"
-#define KCYN "\x1B[36m"
-#define KWHT "\x1B[37m"
+/* Code for terminal colors */
+#define KNIL "\x1B[0m"  /* NULL    */
+#define KRED "\x1B[31m" /* Red     */
+#define KGRN "\x1B[32m" /* Green   */
+#define KYEL "\x1B[33m" /* Yellow  */
+#define KBLU "\x1B[34m" /* Blue    */
+#define KMAG "\x1B[35m" /* Magento */
+#define KCYN "\x1B[36m" /* Cyan    */
+#define KWHT "\x1B[37m" /* White   */
 
 /**
  * Show the menu options for the game.

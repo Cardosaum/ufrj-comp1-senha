@@ -1,7 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
 #include "interface.h"
-#include "structures.h"
+#include "defs.h"
 
 void show_menu()
 {

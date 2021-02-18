@@ -4,6 +4,7 @@
 #include <string.h>
 #include <stdbool.h>
 #include "game.h"
+#include "defs.h"
 
 Password generate_password(int upper_limit, int lower_limit)
 {
