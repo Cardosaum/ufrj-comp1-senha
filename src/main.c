@@ -14,6 +14,7 @@
 
 int main(int argc, char *argv[]) {
     
+    /* Initialize the seed for rand function */
     srand(time(NULL)); /* Should be called ONCE per program. */
 
     clear_screen();
