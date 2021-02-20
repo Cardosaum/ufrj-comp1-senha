@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "defs.h"
 
 /* Code for terminal colors */
@@ -23,7 +24,7 @@ void show_menu();
 /**
  * Gets the player menu input.
  */
-void choose_menu_option();
+int choose_menu_option();
 
 /**
  * Show the entire board of the current game.
