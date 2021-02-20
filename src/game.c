@@ -67,3 +67,18 @@ bool check_password(const char *password)
     else
         return false;
 }
+
+bool check_tries(const Board *game_board){
+
+    bool still_have_tries = false;
+    int i;
+    for(i = 0; i < BOARD_SIZE; i++){
+        if(game_board->rounds->feedback_given){
+            still_have_tries = true;
+            break;
+        }
+    }
+
+    return still_have_tries;
+
+}
