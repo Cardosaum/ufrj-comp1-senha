@@ -83,7 +83,7 @@ bool input_password(Guess *player_guess, int pos)
     else
     {
         printf("\n");
-        printf("Please, enter the password in a valid format.\n"); /* TODO Detail to the user the correct input format */
+        printf("Please, enter the password in a valid format.\n");
         printf("The password must have exactly %i characters,\n", PL);
         printf("and the inserted characters must be in this array:\n[");
         int i;
