@@ -60,7 +60,6 @@ Password generate_password(int upper_limit, int lower_limit)
 
 bool input_password(Guess *player_guess, int pos)
 {   
-    printf("=====IN INPUT_PASSWORD FUNCTION=====\n");
     char password[PASSWORD_LENGTH];
     printf("Enters the password guess:\n");
     fgets(password, PASSWORD_LENGTH, stdin);
@@ -79,6 +78,8 @@ bool input_password(Guess *player_guess, int pos)
             printf("%c", player_guess->player_password.password[i]);
             printf("\n");
         }
+        printf("yahuuu");
+        player_guess->feedback_given = true;
     }
     else
     {
@@ -135,17 +136,46 @@ bool check_password(const char *password)
         return false;
 }
 
-bool check_tries(const Board *game_board){
+void initialize_board(Board *game_board){
+
+    int i;
+
+    game_board->password = generate_password(2,7);
+    for(i = 0; i < BOARD_SIZE; i++){
+        game_board->rounds[i].feedback_given = false;
+    }
+
+}
+
+bool check_tries(const Board game_board){
 
     bool still_have_tries = false;
     int i;
     for(i = 0; i < BOARD_SIZE; i++){
-        if(game_board->rounds->feedback_given){
+        if(!game_board.rounds[i].feedback_given){
             still_have_tries = true;
             break;
         }
     }
 
+    printf("Still have %d tries. \n\n", BOARD_SIZE - i);
+
     return still_have_tries;
+
+}
+
+void start_game(){
+
+    Board game_board;
+    initialize_board(&game_board);
+
+    Guess player_guess;
+    int board_pos = 0;
+
+    while(check_tries(game_board))
+    {
+        if(input_password(&game_board.rounds[board_pos], board_pos));
+            board_pos++;
+    }
 
 }
