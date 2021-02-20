@@ -1,8 +1,3 @@
-#include <stdio.h>
-#include <time.h>
-#include <stdlib.h>
-#include <string.h>
-#include <stdbool.h>
 #include "game.h"
 #include "defs.h"
 
@@ -39,7 +34,10 @@ bool input_password(Guess *player_guess, int pos)
     fgets(password, 4, stdin);
     if(check_password(password))
     {
-        player_guess->player_password->password = password;
+        int i;
+        for (i = 0; i < 4; i++) {
+            player_guess->player_password.password[i] = password[i];
+        }
     }
     else
     {
@@ -52,9 +50,11 @@ bool input_password(Guess *player_guess, int pos)
 
 bool check_password(const char *password)
 {
+    int length = strlen(password);
+    int valid_password = 0;
+
     printf("=====IN CHECK_PASSWORD FUNCTION=====");
 
-    int length = strlen(password);
     if(!(length == 4))
         valid_password = 1;
 
