@@ -20,9 +20,7 @@ int main(int argc, char *argv[]) {
     clear_screen();
     print_logo();
     show_menu();
-    Guess player_guess;
-    int pos = 0;
-    input_password(&player_guess, pos);
+    start_game();
 
     return 0;
 }
