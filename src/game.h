@@ -23,9 +23,14 @@ bool input_password();
 bool check_password(const char *password);
 
 /**
- * Check if the player still have any tries in the current game.
+ * Check if the player still have any tries in the current game. Returns true if the player still have tries. If not, false.
  */
-void check_tries();
+bool check_tries();
+
+/**
+ * Starts the game.
+ */
+void start_game();
 
 /**
  * Finishes the game.
