@@ -2,6 +2,7 @@
 #define GAME_H
 #include "defs.h"
 #include <stdbool.h>
+#include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
