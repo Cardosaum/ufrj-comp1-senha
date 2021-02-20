@@ -44,6 +44,7 @@
 
 # Build files
 build/
+bin/
 
 # Kernel Module Compile Results
 *.mod*
