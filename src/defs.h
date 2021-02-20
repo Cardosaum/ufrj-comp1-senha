@@ -1,5 +1,5 @@
-#ifndef STRUCTURES_H
-#define STRUCTURES_H
+#ifndef DEFS_H
+#define DEFS_H
 
 typedef struct Password {
     int password[4];
