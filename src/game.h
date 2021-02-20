@@ -29,6 +29,11 @@ bool check_password(const char *password);
 bool check_tries();
 
 /**
+ * Initialize all the default values for the game.
+ */
+void initialize_board(Board *game_board);
+
+/**
  * Starts the game.
  */
 void start_game();
