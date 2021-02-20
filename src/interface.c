@@ -21,7 +21,8 @@ void clear_screen()
     system("@cls||clear");
 }
 
-int choose_menu_option(){
+int choose_menu_option()
+{
 	char chosen_option[2];
 	int option;
 	int len;
@@ -44,16 +45,17 @@ int choose_menu_option(){
 	return option;
 }
 
-void show_instructions(){
+void show_instructions()
+{
 	printf("MASTERMIND is code-breaking game.\n\n");
 	printf("- The program itself will choose a password and the player has to guess it's sequence.\n\n");
 	
 	printf("- The player must break the code within the tries given. The player has eight (8) tries\n" 
-			"and each one they has to chose four (4) colors in a total of six (6) available and try\n" 
-			"to guess the password.\n\n");
+				"and each one they has to choose four (4) colors in a total of six (6) available and try\n" 
+				"to guess the password.\n\n");
 			
 	printf("- Each time the player tries to guess and fails, the number of right answers and the\n" 
-			"number of tries left will appear on the screen.\n\n");
+				"number of tries left will appear on the screen.\n\n");
 			
 	printf("- The player loses the game if there are no more tries left.\n\n");
 	
