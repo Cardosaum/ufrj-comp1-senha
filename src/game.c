@@ -78,7 +78,6 @@ bool input_password(Guess *player_guess, int pos)
             printf("%c", player_guess->player_password.password[i]);
             printf("\n");
         }
-        printf("yahuuu");
         player_guess->feedback_given = true;
     }
     else
