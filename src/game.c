@@ -173,7 +173,7 @@ void start_game(){
 
     while(check_tries(game_board))
     {
-        if(input_password(&game_board.rounds[board_pos], board_pos));
+        if(input_password(&game_board.rounds[board_pos], board_pos))
             board_pos++;
     }
 
