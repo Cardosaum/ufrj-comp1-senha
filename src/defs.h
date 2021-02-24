@@ -8,6 +8,7 @@
 #define PASSWORD_LENGTH PL + 1 /* Thus the "plus one" here. */
 
 #define COLORS "RGYBMC" /* Red, Green, Yellow, Blue, Magento, Cyan */
+#define COLORS_LENGTH 6
 
 #include <stdbool.h>
 

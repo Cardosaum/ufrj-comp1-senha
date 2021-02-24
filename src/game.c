@@ -155,7 +155,7 @@ bool check_password(const char *password)
     int s = 0;
     for (i = 0; i < PASSWORD_LENGTH; i++) {
         int j;
-        for (j = 0; j < PASSWORD_LENGTH; j++) {
+        for (j = 0; j < COLORS_LENGTH; j++) {
             if (password[i] == COLORS[j]) {
                 s++;
                 break;
