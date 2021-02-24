@@ -196,12 +196,14 @@ bool check_tries(const Board game_board){
 
 }
 
-void start_game(){
+int start_game(){
 
     Board game_board;
     Guess player_guess;
     int board_pos = 0;
+    int after_game_decision = 0;
     game_board.tried = 0;
+    game_board.won = 0;
 
     initialize_board(&game_board);
 
@@ -214,5 +216,41 @@ void start_game(){
             game_board.tried++;
         }
     }
+
+    after_game_decision = finish_game(game_board);
+    return after_game_decision;
+
+}
+
+int finish_game(Board board){
+
+    int decision = 0;
+
+    clear_screen();
+
+    if(board.won == 1){
+        printf("CONGRATULATIONS! YOU WON!\n\n");
+    }
+    else{
+        printf("YOU LOSE! BETTER LUCK NEXT TIME!\n\n");
+    }
+
+
+    /* TODO Program still gets char inputs from buffer on the next game */
+    printf("1. Play again.\n"); 
+    printf("2. Return to main menu.\n");
+    printf("3. Exit game.\n");
+
+    while(decision == 0){
+        scanf("%d", &decision);
+        if(!(decision == 1 || decision == 2 || decision == 3)){
+            printf("Please, enters the following options.\n\n");
+            printf("1. Play again.\n");
+            printf("2. Return to main menu.\n");
+            printf("3. Exit game.\n");
+        }
+    }
+
+    return decision;
 
 }
