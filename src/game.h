@@ -36,12 +36,12 @@ void initialize_board(Board *game_board);
 /**
  * Starts the game.
  */
-void start_game();
+int start_game();
 
 /**
  * Finishes the game.
  */
-void finish_game();
+int finish_game(Board board);
 
 #endif
 
