@@ -20,18 +20,19 @@ void show_board(Board board)
     }
 
     printf("MASTER PASS: %s\n", board.password.password);
-    printf("┌─────────┬────────────────────────────┬────────────────────┐\n");
-    printf("│ Guess   │ Correct Color and Position │ Correct Color Only │\n");
-    printf("├─────────┼────────────────────────────┼────────────────────┤\n");
+    printf("┌───────────┬──────┐\n");
+    printf("│  Guesses  │ Hint │\n");
+    printf("├───────────┼──────┤\n");
     for (i = 0; i < board.tried; i++) {
         printf("│");
-        printf("  %s  ", board.rounds[i].player_password.password);
+        printf("   %s   ", board.rounds[i].player_password.password);
         printf(" │");
-        printf("             %i, ", calc_pins(board.rounds[i].player_password.password, board.password.password, 'W'));
-        printf("%i              ", calc_pins(board.rounds[i].player_password.password, board.password.password, 'B'));
+        printf("  %i,", calc_pins(board.rounds[i].player_password.password, board.password.password, 'W'));
+        printf("%i   ", calc_pins(board.rounds[i].player_password.password, board.password.password, 'B'));
+        printf("│");
         printf("\n");
     }
-    printf("└─────────┴────────────────────────────┴────────────────────┘\n");
+    printf("└───────────┴──────┘\n");
 }
 
 void clear_screen()
@@ -102,15 +103,23 @@ int calc_pins(char* player_password, char* game_password, char color) {
     int i,j;
     int w = 0;
     int b = 0;
+    bool tmp[PL] = {false};
+
     for (i = 0; i < PL; i++) {
         if (player_password[i] == game_password[i]) {
             w++;
-        } else {
-            for (j = 0; j < PL; j++) {
-                if (player_password[i] == game_password[j]) {
-                    b++;
-                    break;
-                }
+            tmp[i] = true;
+        }
+    }
+
+    for (i = 0; i < PL; i++) {
+        if (tmp[i]) {
+            continue;
+        }
+        for (j = 0; j < PL; j++) {
+            if (player_password[j] == game_password[i] && !tmp[j]) {
+                tmp[i] = true;
+                b++;
             }
         }
     }

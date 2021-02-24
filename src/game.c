@@ -42,11 +42,18 @@ Password generate_password()
     char c;
 
     for(i = 0; i < PL; i++){
-        c = COLORS[(rand() % (strlen(COLORS)+1))];
+        c = COLORS[(rand() % (strlen(COLORS)))];
+        /* printf("%i, %c, %i\n", i, c, c); */
         password.password[i] = c;
     }
     password.password[PL] = '\0';
 
+    /* RBBC */
+    /* password.password[0] = 'R'; */
+    /* password.password[1] = 'B'; */
+    /* password.password[2] = 'R'; */
+    /* password.password[3] = 'C'; */
+    printf("PASS: %s\n", password.password);
     return password;
 }
 
