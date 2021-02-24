@@ -23,13 +23,13 @@ void show_board(Board board)
     printf("│ Guess   │ Correct Color and Position │ Correct Color Only │\n");
     printf("├─────────┼────────────────────────────┼────────────────────┤\n");
     for (i = 0; i < board.tried; i++) {
-        /* printf("│"); */
-        /* printf(" %s ", *board.rounds[i].player_password.password); */
-        /* printf("    ┼"); */
-        printf("%s\n", board.rounds[i].player_password.password);
+        printf("│");
+        printf("  %s  ", board.rounds[i].player_password.password);
+        printf(" │");
+        /* printf("             %i              ", ); */
         printf("\n");
     }
-    printf("└───────────────────────────────────────────────────────────┘\n");
+    printf("└─────────┴────────────────────────────┴────────────────────┘\n");
 }
 
 void clear_screen()
