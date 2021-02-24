@@ -19,6 +19,7 @@ void show_board(Board board)
         return;
     }
 
+    printf("MASTER PASS: %s\n", board.password.password);
     printf("┌─────────┬────────────────────────────┬────────────────────┐\n");
     printf("│ Guess   │ Correct Color and Position │ Correct Color Only │\n");
     printf("├─────────┼────────────────────────────┼────────────────────┤\n");
@@ -26,7 +27,8 @@ void show_board(Board board)
         printf("│");
         printf("  %s  ", board.rounds[i].player_password.password);
         printf(" │");
-        /* printf("             %i              ", ); */
+        printf("             %i, ", calc_pins(board.rounds[i].player_password.password, board.password.password, 'W'));
+        printf("%i              ", calc_pins(board.rounds[i].player_password.password, board.password.password, 'B'));
         printf("\n");
     }
     printf("└─────────┴────────────────────────────┴────────────────────┘\n");
@@ -88,4 +90,34 @@ void print_logo()
     printf("| |  | || | | |/\\__/ / | | | |___| |\\ \\| |  | |_| |_| |\\  | |/ /  \n");
     printf("\\_|  |_/\\_| |_/\\____/  \\_/ \\____/\\_| \\_\\_|  |_/\\___/\\_| \\_/___/   \n");
     printf("                                                                  \n");
+}
+
+int calc_pins(char* player_password, char* game_password, char color) {
+
+    if (color != 'W' && color != 'B') {
+        printf("\n\nError in calc_pins color parameter\n\n");
+        exit(3);
+    }
+
+    int i,j;
+    int w = 0;
+    int b = 0;
+    for (i = 0; i < PL; i++) {
+        if (player_password[i] == game_password[i]) {
+            w++;
+        } else {
+            for (j = 0; j < PL; j++) {
+                if (player_password[i] == game_password[j]) {
+                    b++;
+                    break;
+                }
+            }
+        }
+    }
+
+    if (color == 'W') {
+        return w;
+    } else {
+        return b;
+    }
 }

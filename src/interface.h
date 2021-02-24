@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "defs.h"
 
 /* Code for terminal colors */
@@ -50,5 +51,11 @@ void clear_screen();
  * Prints the ASCII Mastermind game art.
  */
 void print_logo();
+
+/**
+ * Calculate how many White and Black pins
+ * we need to show to user
+ */
+int calc_pins(char* player_password, char* game_password, char color);
 
 #endif

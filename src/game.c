@@ -35,27 +35,17 @@ size_t trimwhitespace(char *out, size_t len, const char *str)
     return out_size;
 }
 
-Password generate_password(int upper_limit, int lower_limit)
+Password generate_password()
 {
-    int result = 0, low_num = 0, hi_num = 0;
     int i = 0;
     Password password;
-    password.password[0] = 1;
+    char c;
 
-
-    if (lower_limit < upper_limit)
-    {
-        low_num = lower_limit;
-        hi_num = upper_limit + 1;
-    } else {
-        low_num = upper_limit + 1;
-        hi_num = lower_limit;
+    for(i = 0; i < PL; i++){
+        c = COLORS[(rand() % (strlen(COLORS)+1))];
+        password.password[i] = c;
     }
-
-    for(i = 0; i < 4; i++){
-        result = (rand() % (hi_num - low_num)) + low_num;
-        password.password[i] = result;
-    }
+    password.password[PL] = '\0';
 
     return password;
 }
@@ -78,7 +68,6 @@ bool input_password(Guess *player_guess, int pos)
     /* Read input password */
     printf("Enters the password guess:\n");
     while ((c = getchar()) != '\n') {
-        printf("%i %c\n", count, c);
         switch (c) {
             case ' ':
                 continue;
@@ -172,7 +161,7 @@ void initialize_board(Board *game_board){
 
     int i;
 
-    game_board->password = generate_password(2,7);
+    game_board->password = generate_password();
     for(i = 0; i < BOARD_SIZE; i++){
         game_board->rounds[i].feedback_given = false;
     }
