@@ -1,5 +1,6 @@
 #include "game.h"
 #include "defs.h"
+#include "interface.h"
 
 size_t trimwhitespace(char *out, size_t len, const char *str)
 {
@@ -60,24 +61,55 @@ Password generate_password(int upper_limit, int lower_limit)
 }
 
 bool input_password(Guess *player_guess, int pos)
-{   
-    char password[PASSWORD_LENGTH];
-    printf("Enters the password guess:\n");
-    fgets(password, PASSWORD_LENGTH, stdin);
-    char new[PASSWORD_LENGTH];
-    trimwhitespace(new, PASSWORD_LENGTH, password);
+{
+    /*
+     * Return true if the the input was valid
+     * Return false otherwise
+     */
+
     int i;
+    char c;
+    int count = 0;
+    char whipeout_stdin;
+    bool is_ok = true;
+    char password[PASSWORD_LENGTH];
+    char new[PASSWORD_LENGTH];
+
+    /* Read input password */
+    printf("Enters the password guess:\n");
+    while ((c = getchar()) != '\n') {
+        printf("%i %c\n", count, c);
+        switch (c) {
+            case ' ':
+                continue;
+                break;
+            default:
+                c = toupper(c);
+                if (count >= PL) {
+                    password[PL] = '\0';
+                    is_ok = false;
+                    while ((whipeout_stdin = getchar()) != '\n' && whipeout_stdin != EOF){}
+                    break;
+                }
+                password[count] = c;
+                count++;
+                    }
+        if (!is_ok) {
+            break;
+        }
+    }
+
+    trimwhitespace(new, PASSWORD_LENGTH, password);
     for (i = 0; i < PASSWORD_LENGTH; i++) {
         password[i] = new[i];
     }
 
-    if(check_password(password))
+    is_ok = is_ok && check_password(password);
+    if(is_ok)
     {
         int i;
         for (i = 0; i < PASSWORD_LENGTH; i++) {
             player_guess->player_password.password[i] = password[i];
-            printf("%c", player_guess->player_password.password[i]);
-            printf("\n");
         }
         player_guess->feedback_given = true;
     }
@@ -157,7 +189,7 @@ bool check_tries(const Board game_board){
             break;
         }
     }
-
+    /* clear_screen(); */
     printf("Still have %d tries. \n\n", BOARD_SIZE - i);
 
     return still_have_tries;
@@ -167,15 +199,20 @@ bool check_tries(const Board game_board){
 void start_game(){
 
     Board game_board;
-    initialize_board(&game_board);
-
     Guess player_guess;
     int board_pos = 0;
+    game_board.tried = 0;
+
+    initialize_board(&game_board);
 
     while(check_tries(game_board))
     {
-        if(input_password(&game_board.rounds[board_pos], board_pos))
+        /* clear_screen(); */
+        show_board(game_board);
+        if (input_password(&game_board.rounds[board_pos], board_pos)) {
             board_pos++;
+            game_board.tried++;
+        }
     }
 
 }
