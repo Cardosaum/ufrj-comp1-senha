@@ -13,7 +13,8 @@ void show_menu()
 
 void show_board(Board board)
 {
-    int i;
+    int i,j;
+    int w,b;
 
     if (board.tried == 0) {
         return;
@@ -26,10 +27,19 @@ void show_board(Board board)
     for (i = 0; i < board.tried; i++) {
         printf("│");
         printf("   %s   ", board.rounds[i].player_password.password);
+        printf(" │ ");
+        w = calc_pins(board.rounds[i].player_password.password, board.password.password, 'W');
+        b = calc_pins(board.rounds[i].player_password.password, board.password.password, 'B');
+        for (j = 0; j < w; j++) {
+            printf("W");
+        }
+        for (j = 0; j < b; j++) {
+            printf("B");
+        }
+        for (j = 0; j < (PL-(w+b)); j++) {
+            printf("-");
+        }
         printf(" │");
-        printf("  %i,", calc_pins(board.rounds[i].player_password.password, board.password.password, 'W'));
-        printf("%i   ", calc_pins(board.rounds[i].player_password.password, board.password.password, 'B'));
-        printf("│");
         printf("\n");
     }
     printf("└───────────┴──────┘\n");
