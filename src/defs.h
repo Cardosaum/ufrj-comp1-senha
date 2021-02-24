@@ -28,6 +28,7 @@ typedef struct Board {
     Guess rounds[BOARD_SIZE];
     Password password;
     int tried;
+    int won;
 } Board;
 
 #endif
