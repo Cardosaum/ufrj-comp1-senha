@@ -5,7 +5,7 @@
              /* we need to add 1 to it's value because strlen expects a  */
              /* null-terminated string.                                  */
 #define PASSWORD_LENGTH PL + 1 /* Thus the "plus one" here. */
-#define COLORS "RGYBMC" /* Red, Green, Yellow, Blue, Mgento, Cyan */
+#define COLORS "RGYBMC" /* Red, Green, Yellow, Blue, Magento, Cyan */
 
 #include <stdbool.h>
 
