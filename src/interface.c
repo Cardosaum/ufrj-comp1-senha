@@ -26,7 +26,7 @@ void show_board(Board board)
         /* printf("│"); */
         /* printf(" %s ", *board.rounds[i].player_password.password); */
         /* printf("    ┼"); */
-        printf("%c ", *board.rounds[i].player_password.password);
+        printf("%s\n", board.rounds[i].player_password.password);
         printf("\n");
     }
     printf("└───────────────────────────────────────────────────────────┘\n");

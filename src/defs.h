@@ -14,7 +14,7 @@
 #define BOARD_SIZE 8
 
 typedef struct Password {
-    char* password[PASSWORD_LENGTH];
+    char password[PASSWORD_LENGTH];
 } Password;
 
 typedef struct Guess {
