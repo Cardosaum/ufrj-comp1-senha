@@ -137,3 +137,4 @@ int calc_pins(char* player_password, char* game_password, char color) {
     } else {
         return b;
     }
+}
