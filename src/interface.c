@@ -53,15 +53,16 @@ void clear_screen()
 int choose_menu_option()
 {
     int option;
-    char chosen_option[OPTION_LENGTH]; 
+    char c;
+    char whipeout_stdin;
     
     while(1){
-        printf("Which option will you choose? (1/2/3/4) ");
-        fgets(chosen_option, OPTION_LENGTH, stdin);
-        
-        option = atoi(chosen_option);
-		 
-        if((strlen(chosen_option) > 2) || (option != 1 && option != 2 && option != 3 && option != 4)){
+        while ((whipeout_stdin = getchar()) != '\n' && whipeout_stdin != EOF){}
+        printf("Which option will you choose? (1/2/3/4)\n");
+        printf("> ");
+        c = getchar();
+        option = atoi(&c);
+        if (option < 1 || option > 4) {
             printf("There's something wrong! Can you type again?\n\n");
         } else {
             printf("You've chosen option %d.\n", option);
