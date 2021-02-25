@@ -62,7 +62,7 @@ int choose_menu_option()
         printf("> ");
         c = getchar();
         option = atoi(&c);
-        if (option < 1 || option > 4 || (c = getchar()) != EOF) {
+        if (option < 1 || option > 4 || ((c = getchar()) != '\n' && c != EOF)) {
             printf("There's something wrong! Can you type again?\n\n");
         } else {
             printf("You've chosen option %d.\n", option);
