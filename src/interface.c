@@ -111,23 +111,19 @@ int calc_pins(char* player_password, char* game_password, char color) {
     int i,j;
     int w = 0;
     int b = 0;
-    bool tmp[PL] = {false};
+    char added[PL] = {'\0'};
 
     for (i = 0; i < PL; i++) {
         if (player_password[i] == game_password[i]) {
             w++;
-            tmp[i] = true;
+            added[i] = player_password[i];
         }
     }
-
     for (i = 0; i < PL; i++) {
-        if (tmp[i]) {
-            continue;
-        }
         for (j = 0; j < PL; j++) {
-            if (player_password[j] == game_password[i] && !tmp[j]) {
-                tmp[i] = true;
+            if (player_password[i] == game_password[j] && clo(added, PL, player_password[i]) < clo(game_password, PL, player_password[i])) {
                 b++;
+                added[i] = player_password[i];
             }
         }
     }
@@ -137,4 +133,15 @@ int calc_pins(char* player_password, char* game_password, char color) {
     } else {
         return b;
     }
+}
+
+int clo(char* list, int list_len, char item) {
+    int i;
+    int s = 0;
+    for (i = 0; i < list_len; i++) {
+        if (list[i] == item) {
+            s++;
+        }
+    }
+    return s;
 }

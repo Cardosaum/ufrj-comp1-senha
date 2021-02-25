@@ -48,16 +48,16 @@ Password generate_password()
     }
     password.password[PL] = '\0';
 
-    /* RBBC */
-    /* password.password[0] = 'R'; */
-    /* password.password[1] = 'B'; */
-    /* password.password[2] = 'R'; */
+    /* GRYC */
+    /* password.password[0] = 'G'; */
+    /* password.password[1] = 'R'; */
+    /* password.password[2] = 'Y'; */
     /* password.password[3] = 'C'; */
     printf("PASS: %s\n", password.password);
     return password;
 }
 
-bool input_password(Guess *player_guess, int pos)
+bool input_password(Guess *player_guess, Board game_board)
 {
     /*
      * Return true if the the input was valid
@@ -72,8 +72,18 @@ bool input_password(Guess *player_guess, int pos)
     char password[PASSWORD_LENGTH];
     char new[PASSWORD_LENGTH];
 
+    int tries_left = 0;
+    for (tries_left = 0; tries_left < BOARD_SIZE; tries_left++) {
+        if (!game_board.rounds[tries_left].feedback_given) {
+            tries_left = BOARD_SIZE - tries_left;
+            break;
+        }
+    }
+    printf("%i Tries left\n", tries_left);
+    printf("Password guess:\n");
+    printf("> ");
+
     /* Read input password */
-    printf("Enters the password guess:\n");
     while ((c = getchar()) != '\n') {
         switch (c) {
             case ' ':
@@ -207,7 +217,7 @@ int start_game(){
     {
         /* clear_screen(); */
         show_board(game_board);
-        if (input_password(&game_board.rounds[board_pos], board_pos)) {
+        if (input_password(&game_board.rounds[board_pos], game_board)) {
             board_pos++;
             game_board.tried++;
         }

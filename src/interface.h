@@ -58,4 +58,10 @@ void print_logo();
  */
 int calc_pins(char* player_password, char* game_password, char color);
 
+/**
+ * Calculate List Occurrence
+ * Return how many times item is present in list
+ */
+int clo(char* list, int list_len, char item);
+
 #endif

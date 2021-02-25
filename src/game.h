@@ -16,7 +16,7 @@ Password generate_password();
 /**
  * Gets and validates the player's input password.
  */
-bool input_password(Guess *player_guess, int pos);
+bool input_password(Guess *player_guess, Board game_board);
 
 /**
  * Checks the player's input password against the secret password.  
