@@ -13,23 +13,36 @@ void show_menu()
 
 void show_board(Board board)
 {
-    int i;
+    int i,j;
+    int w,b;
 
     if (board.tried == 0) {
         return;
     }
 
-    printf("┌─────────┬────────────────────────────┬────────────────────┐\n");
-    printf("│ Guess   │ Correct Color and Position │ Correct Color Only │\n");
-    printf("├─────────┼────────────────────────────┼────────────────────┤\n");
+    printf("MASTER PASS: %s\n", board.password.password);
+    printf("┌───────────┬──────┐\n");
+    printf("│  Guesses  │ Hint │\n");
+    printf("├───────────┼──────┤\n");
     for (i = 0; i < board.tried; i++) {
-        /* printf("│"); */
-        /* printf(" %s ", *board.rounds[i].player_password.password); */
-        /* printf("    ┼"); */
-        printf("%s\n", board.rounds[i].player_password.password);
+        printf("│");
+        printf("   %s   ", board.rounds[i].player_password.password);
+        printf(" │ ");
+        w = calc_pins(board.rounds[i].player_password.password, board.password.password, 'W');
+        b = calc_pins(board.rounds[i].player_password.password, board.password.password, 'B');
+        for (j = 0; j < w; j++) {
+            printf("W");
+        }
+        for (j = 0; j < b; j++) {
+            printf("B");
+        }
+        for (j = 0; j < (PL-(w+b)); j++) {
+            printf("-");
+        }
+        printf(" │");
         printf("\n");
     }
-    printf("└───────────────────────────────────────────────────────────┘\n");
+    printf("└───────────┴──────┘\n");
 }
 
 void clear_screen()
@@ -87,3 +100,40 @@ void print_logo()
     printf("\\_|  |_/\\_| |_/\\____/  \\_/ \\____/\\_| \\_\\_|  |_/\\___/\\_| \\_/___/   \n");
     printf("                                                                  \n");
 }
+
+int calc_pins(char* player_password, char* game_password, char color) {
+
+    if (color != 'W' && color != 'B') {
+        printf("\n\nError in calc_pins color parameter\n\n");
+        exit(3);
+    }
+
+    int i,j;
+    int w = 0;
+    int b = 0;
+    bool tmp[PL] = {false};
+
+    for (i = 0; i < PL; i++) {
+        if (player_password[i] == game_password[i]) {
+            w++;
+            tmp[i] = true;
+        }
+    }
+
+    for (i = 0; i < PL; i++) {
+        if (tmp[i]) {
+            continue;
+        }
+        for (j = 0; j < PL; j++) {
+            if (player_password[j] == game_password[i] && !tmp[j]) {
+                tmp[i] = true;
+                b++;
+            }
+        }
+    }
+
+    if (color == 'W') {
+        return w;
+    } else {
+        return b;
+    }
