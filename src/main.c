@@ -12,7 +12,7 @@
 #include "game.h"
 #include "interface.h"
 
-int main(int argc, char *argv[]) {
+int main(void) {
 
     int after_game_decision = 0;
     int game_loop = 1;
