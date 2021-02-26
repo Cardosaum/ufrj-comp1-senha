@@ -117,7 +117,8 @@ int choose_menu_option()
 
 void show_instructions()
 {
-    printf("MASTERMIND is code-breaking game.\n\n");
+    char whipeout_stdin;
+    printf("MASTERMIND is a code-breaking game.\n\n");
     printf("- The program itself will choose a password and the player has to guess it's sequence.\n\n");
     
     printf("- The player must break the code within the tries given. The player has eight (8) tries\n" 
@@ -130,8 +131,10 @@ void show_instructions()
     printf("- The player loses the game if there are no more tries left.\n\n");
     
     printf("Available colors: r (red) | g (green) | y (yellow) | b (blue) | m (magento) | c (cyan)\n");
-    printf("Example of entry: rbby\n");
-};
+    printf("Example of entry (input is case insensitive): rbby or RBBY\n");
+    printf("\nPress <enter> to exit the Instructions page.\n");
+    while ((whipeout_stdin = getchar()) != '\n' && whipeout_stdin != EOF){}
+}
 
 void print_logo()
 {
