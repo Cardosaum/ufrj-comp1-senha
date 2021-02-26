@@ -196,7 +196,7 @@ bool check_tries(const Board game_board){
         }
     }
     /* clear_screen(); */
-    printf("Still have %d tries. \n\n", BOARD_SIZE - i);
+    /* printf("Still have %d tries. \n\n", BOARD_SIZE - i); */
 
     return still_have_tries;
 
