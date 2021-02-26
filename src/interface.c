@@ -164,8 +164,14 @@ int calc_pins(char* player_password, char* game_password, char color) {
         }
     }
     for (i = 0; i < PL; i++) {
+        if (added[i] != '\0') {
+            continue;
+        }
         for (j = 0; j < PL; j++) {
-            if (player_password[i] == game_password[j] && clo(added, PL, player_password[i]) < clo(game_password, PL, player_password[i])) {
+            if (player_password[i] == game_password[j] &&
+                clo(added, PL, player_password[i]) < clo(game_password, PL, player_password[i]) &&
+                added[i] == '\0')
+            {
                 b++;
                 added[i] = player_password[i];
             }
