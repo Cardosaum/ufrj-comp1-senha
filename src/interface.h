@@ -9,6 +9,7 @@
 
 /* Code for terminal colors */
 #define KNIL "\x1B[0m"  /* NULL    */
+#define KBLK "\x1B[30m" /* Red     */
 #define KRED "\x1B[31m" /* Red     */
 #define KGRN "\x1B[32m" /* Green   */
 #define KYEL "\x1B[33m" /* Yellow  */
@@ -31,6 +32,11 @@ int choose_menu_option();
  * Show the entire board of the current game.
  */
 void show_board(Board board);
+
+/**
+ * Prints the player guesses colored. 
+ */
+void print_guesses(char *guesses);
 
 /**
  * Show the instructions. How to play the game.
@@ -63,5 +69,10 @@ int calc_pins(char* player_password, char* game_password, char color);
  * Return how many times item is present in list
  */
 int clo(char* list, int list_len, char item);
+
+/**
+ * Prints game win art.
+ */
+void print_win();
 
 #endif
