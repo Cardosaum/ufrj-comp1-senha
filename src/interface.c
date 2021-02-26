@@ -120,6 +120,7 @@ int choose_menu_option()
 void show_instructions()
 {
     char whipeout_stdin;
+    clear_screen();
     printf("MASTERMIND is a code-breaking game.\n\n");
     printf("- The program itself will choose a password and the player has to guess it's sequence.\n\n");
     
