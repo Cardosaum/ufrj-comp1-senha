@@ -234,6 +234,8 @@ int start_game(){
 int finish_game(Board board){
 
     int decision = 0;
+    char c;
+    char whipeout_stdin;
 
     clear_screen();
 
@@ -251,12 +253,18 @@ int finish_game(Board board){
     printf("3. Exit game.\n");
 
     while(decision == 0){
-        scanf("%d", &decision);
-        if(!(decision == 1 || decision == 2 || decision == 3)){
+        c = getchar();
+        c = atoi(&c);
+        while ((whipeout_stdin = getchar()) != '\n' && whipeout_stdin != EOF){}
+        printf("C:: %i\n", c);
+
+        if(c < 1 || c > 3){
             printf("Please, enters the following options.\n\n");
             printf("1. Play again.\n");
             printf("2. Return to main menu.\n");
             printf("3. Exit game.\n");
+        } else {
+            decision = c;
         }
     }
 
