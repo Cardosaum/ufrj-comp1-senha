@@ -70,4 +70,9 @@ int calc_pins(char* player_password, char* game_password, char color);
  */
 int clo(char* list, int list_len, char item);
 
+/**
+ * Prints game win art.
+ */
+void print_win();
+
 #endif
