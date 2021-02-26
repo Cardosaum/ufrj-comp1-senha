@@ -16,7 +16,8 @@ int main(void) {
 
     int after_game_decision = 0;
     int game_loop = 1;
-    int display_menu = 0;
+    int display_menu = 1;
+    int op;
     
     /* Initialize the seed for rand function */
     srand(time(NULL)); /* Should be called ONCE per program. */
@@ -26,32 +27,47 @@ int main(void) {
         clear_screen();
         
         if(display_menu == 1){
-            
-            display_menu = 0;
             print_logo();
             show_menu();
+            op = choose_menu_option();
         }
 
-        after_game_decision = start_game();
-        switch(after_game_decision){
-
+        switch (op) {
             case 1:
-                break;
+                after_game_decision = start_game();
+                switch(after_game_decision){
 
+                    case 1:
+                        display_menu = 0;
+                        break;
+
+                    case 2:
+                        display_menu = 1;
+                        break;
+
+                    case 3:
+                        game_loop = 0;
+                        break;
+
+                    default:
+                        printf("UNEXPECTED ERROR HAPPENED AT start_game().\n\n");
+                }
+                break;
             case 2:
-                display_menu = 1;
+                show_instructions();
                 break;
-
             case 3:
+                printf("PANIC: We didn't implement this function yet...\n");
+                exit(4);
+                break;
+            case 4:
                 game_loop = 0;
                 break;
+                    }
 
-            default:
-                printf("UNEXPECTED ERROR HAPPENED AT start_game().\n\n");
-        }
     }
 
-    printf("Goodbye! See you soon!.\n\n");
+    printf("\n\nGoodbye! See you soon!.\n\n");
     /* printf("Press any key to exit...\n\n"); */
 
     return 0;

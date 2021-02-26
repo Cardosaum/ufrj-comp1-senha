@@ -94,12 +94,14 @@ void clear_screen()
 
 int choose_menu_option()
 {
+    int n = 0;
     int option;
     char c;
     char whipeout_stdin;
     
     while(1){
-        while ((whipeout_stdin = getchar()) != '\n' && whipeout_stdin != EOF){}
+        if(n){while ((whipeout_stdin = getchar()) != '\n' && whipeout_stdin != EOF){}}
+        n++;
         printf("Which option will you choose? (1/2/3/4)\n");
         printf("> ");
         c = getchar();
