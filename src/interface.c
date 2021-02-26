@@ -26,15 +26,16 @@ void show_board(Board board)
     printf("├───────────┼──────┤\n");
     for (i = 0; i < board.tried; i++) {
         printf("│");
-        printf("   %s   ", board.rounds[i].player_password.password);
+        print_guesses(board.rounds[i].player_password.password);
+        /*printf("   %s   ", board.rounds[i].player_password.password);*/
         printf(" │ ");
         w = calc_pins(board.rounds[i].player_password.password, board.password.password, 'W');
         b = calc_pins(board.rounds[i].player_password.password, board.password.password, 'B');
         for (j = 0; j < w; j++) {
-            printf("W");
+            printf("%sW%s",KWHT,KNIL);
         }
         for (j = 0; j < b; j++) {
-            printf("B");
+            printf("%sB%s",KBLK,KNIL);
         }
         for (j = 0; j < (PL-(w+b)); j++) {
             printf("-");
@@ -43,6 +44,47 @@ void show_board(Board board)
         printf("\n");
     }
     printf("└───────────┴──────┘\n");
+}
+
+void print_guesses(char* guesses)
+{
+    int i;
+    int count = 0;
+
+    printf("   ");
+    for(i = 0; i < PASSWORD_LENGTH - 1; i++){
+        count++;
+        switch (guesses[i])
+        {
+        case 'R':
+            printf("%s%c%s",KRED,guesses[i],KNIL);
+            break;
+
+        case 'G':
+            printf("%s%c%s",KGRN,guesses[i],KNIL);
+            break;
+
+        case 'Y':
+            printf("%s%c%s",KYEL,guesses[i],KNIL);
+            break;
+
+        case 'B':
+            printf("%s%c%s",KBLU,guesses[i],KNIL);
+            break;
+
+        case 'M':
+            printf("%s%c%s",KMAG,guesses[i],KNIL);
+            break;
+
+        case 'C':
+            printf("%s%c%s",KCYN,guesses[i],KNIL);
+            break;
+        
+        default:
+            break;
+        }
+    }
+    printf("   ");
 }
 
 void clear_screen()
