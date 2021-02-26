@@ -208,12 +208,13 @@ int start_game(){
     Guess player_guess;
     int board_pos = 0;
     int after_game_decision = 0;
+    int correct = 0;
     game_board.tried = 0;
     game_board.won = 0;
 
     initialize_board(&game_board);
 
-    while(check_tries(game_board))
+    while(check_tries(game_board) && (correct = calc_pins(game_board.rounds[board_pos-1].player_password.password, game_board.password.password, 'W')) != PL)
     {
         /* clear_screen(); */
         show_board(game_board);
@@ -223,6 +224,8 @@ int start_game(){
         }
     }
 
+    if (correct == PL)
+        game_board.won = 1;
     after_game_decision = finish_game(game_board);
     return after_game_decision;
 
