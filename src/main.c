@@ -67,7 +67,7 @@ int main(void) {
 
     }
 
-    printf("\n\nGoodbye! See you soon!.\n\n");
+    printf("\n\nGoodbye! See you soon!\n\n");
     /* printf("Press any key to exit...\n\n"); */
 
     return 0;
