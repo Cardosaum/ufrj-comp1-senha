@@ -128,10 +128,70 @@ bool input_password(Guess *player_guess, Board game_board)
         int i;
         int l = strlen(COLORS);
         for (i = 0; i < l-1; i++) {
-            printf("%c, ", COLORS[i]);
+            switch (COLORS[i])
+            {
+                case 'R':
+                    printf("%s%c%s",KRED,COLORS[i],KNIL);
+                    break;
+
+                case 'G':
+                    printf("%s%c%s",KGRN,COLORS[i],KNIL);
+                    break;
+
+                case 'Y':
+                    printf("%s%c%s",KYEL,COLORS[i],KNIL);
+                    break;
+
+                case 'B':
+                    printf("%s%c%s",KBLU,COLORS[i],KNIL);
+                    break;
+
+                case 'M':
+                    printf("%s%c%s",KMAG,COLORS[i],KNIL);
+                    break;
+
+                case 'C':
+                    printf("%s%c%s",KCYN,COLORS[i],KNIL);
+                    break;
+                
+                default:
+                    break;
+            }
+            printf(", ");
         }
-        printf("%c].\n", COLORS[l-1]);
+        switch (COLORS[l-1])
+        {
+            case 'R':
+                printf("%s%c%s",KRED,COLORS[l-1],KNIL);
+                break;
+
+            case 'G':
+                printf("%s%c%s",KGRN,COLORS[l-1],KNIL);
+                break;
+
+            case 'Y':
+                printf("%s%c%s",KYEL,COLORS[l-1],KNIL);
+                break;
+
+            case 'B':
+                printf("%s%c%s",KBLU,COLORS[l-1],KNIL);
+                break;
+
+            case 'M':
+                printf("%s%c%s",KMAG,COLORS[l-1],KNIL);
+                break;
+
+            case 'C':
+                printf("%s%c%s",KCYN,COLORS[l-1],KNIL);
+                break;
+            
+            default:
+                break;
+        }
+        printf("].\n");
         printf("\n");
+        printf("\nPress <enter> to return to the game.\n");
+        while ((whipeout_stdin = getchar()) != '\n' && whipeout_stdin != EOF){}
         return false;
     }
 
@@ -212,16 +272,17 @@ int start_game(){
     game_board.tried = 0;
     game_board.won = 0;
 
+    clear_screen();
     initialize_board(&game_board);
 
     while(check_tries(game_board) && (correct = calc_pins(game_board.rounds[board_pos-1].player_password.password, game_board.password.password, 'W')) != PL)
     {
-        /* clear_screen(); */
         show_board(game_board);
         if (input_password(&game_board.rounds[board_pos], game_board)) {
             board_pos++;
             game_board.tried++;
         }
+        clear_screen();
     }
 
     if (correct == PL)
@@ -240,10 +301,12 @@ int finish_game(Board board){
     clear_screen();
 
     if(board.won == 1){
-        printf("CONGRATULATIONS! YOU WON!\n\n");
+        /* printf("CONGRATULATIONS! YOU WON!\n\n"); */
+        print_win();
     }
     else{
-        printf("YOU LOSE! BETTER LUCK NEXT TIME!\n\n");
+        /* printf("YOU LOSE! BETTER LUCK NEXT TIME!\n\n"); */
+        print_lose();
     }
 
 
@@ -256,7 +319,6 @@ int finish_game(Board board){
         c = getchar();
         c = atoi(&c);
         while ((whipeout_stdin = getchar()) != '\n' && whipeout_stdin != EOF){}
-        printf("C:: %i\n", c);
 
         if(c < 1 || c > 3){
             printf("Please, enters the following options.\n\n");
