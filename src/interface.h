@@ -75,4 +75,9 @@ int clo(char* list, int list_len, char item);
  */
 void print_win();
 
+/**
+ * Prints game lose art.
+ */
+void print_lose();
+
 #endif

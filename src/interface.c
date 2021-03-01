@@ -120,18 +120,18 @@ void show_instructions()
     char whipeout_stdin;
     clear_screen();
     printf("MASTERMIND is a code-breaking game.\n\n");
-    printf("- The program itself will choose a password and the player has to guess it's sequence.\n\n");
+    printf("- The program itself will generate a password and the player has to guess it's sequence.\n\n");
     
-    printf("- The player must break the code within the tries given. The player has eight (8) tries\n" 
-                "and each one they has to choose four (4) colors in a total of six (6) available and try\n" 
-                "to guess the password.\n\n");
+    printf("- The player must break the code and guess the password within the tries given. Each game,\n" 
+           "there will be a total of 8 tries and each try they has to choose 4 colors in a total of 6 \n" 
+           "available and try to guess the password.\n\n");
             
-    printf("- Each time the player tries to guess and fails, the number of right answers and the\n" 
-                "number of tries left will appear on the screen.\n\n");
+    printf("- Each time the player tries to guess and fails, both the number of right answers and tries\n" 
+           "left will appear on screen.\n\n");
             
     printf("- The player loses the game if there are no more tries left.\n\n");
     
-    printf("Available colors: r (red) | g (green) | y (yellow) | b (blue) | m (magento) | c (cyan)\n");
+    printf("Available colors: %s R %s G %s Y %s B %s M %s C %s\n", KRED, KGRN, KYEL, KBLU, KMAG, KCYN, KNIL);
     printf("Example of entry (input is case insensitive): rbby or RBBY\n");
     printf("\nPress <enter> to exit the Instructions page.\n");
     while ((whipeout_stdin = getchar()) != '\n' && whipeout_stdin != EOF){}
@@ -190,44 +190,44 @@ int clo(char* list, int list_len, char item) {
     for (i = 0; i < list_len; i++) {
         if (list[i] == item) {
             s++;
+
         }
     }
     return s;
 }
 
-void print_win(){
 
-    printf("█████████████████████████████████████████████████████████████████████████████████\n");
-    printf("███████████████▀▀▀▀,,,╔╔╔╔╔╔⌂,,╙▀▀▀▀████████████████████████████████████████████\n");
-    printf("█████████▀▀╓▄▄╣╫╫M╩╩╨░░░░╫╫╫╫╫╫░╫╫╣╫ΦUÜ░▀▀██████████████████████████████████████\n");
-    printf("███████▀ φ╣M\"`   .«]ÑÑÑ╫╫Ñ╫╫╫╬╬╬╬╬╬╬╬╣╫╣▓╗\"▀████████████████████████████████████\n");
-    printf("██████▀ ╟▌Ñ    j░░]Ñ╫╫╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╬╫╫██H╙████████████████████████████████████\n");
-    printf("██▀½╓æ╗«j╣▓▄▄g, ░º╚╚ÑÑ╬╬╬╬╬╬╬╬╬╬╫╫╫╫╦▄▓▓▓Ñj╔æ╦,▀▀███████████████████████████████\n");
-    printf("╔╬M^╟▀░░╫╣╢╬████████▓▄███▓▓▓▓▓▓█████▌╬▓ÑÑ░╙MM╙╬Φr▐█████████████████████████████\n");
-    printf("█Ü╓██▄`░╫╣▓▓████▓▌╫╫╬Ñ╫Ñ╫Ñ╫╫Ñ╫╫▓▓███▌▓▓MÑ`,▄█▄ ╫▌▐█████████████████████████████\n");
-    printf("▓Ü▐███ ░╫╣▓▓▀M╣▄▌╫╬M░▄▄▄░░╙╚╬╬╬╣▓▄╨▀▌▓▓MÑ`▐███ ╫▌▐█████████████████████████████\n");
-    printf("▓Ü▐███ ░╫╣▓╬▓D╫█▌M░╣██▓MÖ▄µ░░╚╬╫▓█D║╬▓▓MÑ`▐███ ╫▌▐█████████████████████████████\n");
-    printf("╬D`▐██ ░╫╣▌▀╦╫██▌M░ñM▄▄H▀▄▀░╫U╙╢▓██▄╝╫▓MÑ`▐██░j╬H▐█████████████████████████████\n");
-    printf("█µ╝NUÖφ⌂.j╣▌▓Ö▓██▌M░░]▀╝Ü╔φ╗╣▓M░║▓██▌╟╫▓M░:╔Ö;╔╫½▄████▀▀▀""""""▀▀▀██████████████\n");
-    printf("███▄╙╟M░`j╫Ñ╗▀╫▓█▌╦░╚Ñ╫╫╣▓▓▓▀▀░╟▓██▌╣Ñ╬▀M`░╨╚M╙▄██▀▀░╥╗╣▓▓▓▓▓▓▓▓▄▄╦░▀███████████\n");
-    printf("███████▄▄,╟╫╬N▓╫██▓╬╬╗░░░Ö░░╔╬╣▓▓█▓╫▌╬▓╬░ `▄███▀▀]╗▄▄▓████████████▓▓▓╣▀█████████\n");
-    printf("██████████╦╟╫▓Ñ╗▌▀██▓╫╬╫╫╫╫╬╫╣▓██▀▄╗╫▓▌M «╗▄▄▄▄╗╣▓▓██████████████████▓▌╦▀███████\n");
-    printf("███████████U╚╫▓▓D╣▀Ö▓▀▓▌╣╬▀▓▌╬▌▀╫╬╣▓▌M`╔╣▓█████████████████████████████▌╗²██████\n");
-    printf("████████████▄,╚╬╬▀╣╫æ╙½╬M░╣╗╙╟╫╫M▀▓M` -▓▓████████████████████]▄▓██M▄▓███▓╗ ▀████\n");
-    printf("███████████████▄²╚╩N╬╬╫▀╫╫▀▀╫╬MM╩º^▄█h╔▓▓████████████████████D╝▓██╗╩▀▓███▓╬H╙███\n");
-    printf("██████████████████⌐-``\"\"\"\"\"\"\"`. ▄█████⌐Φ▓▓███████████████████╬ ║██╬ ╟▓███▓▓▓@╙██\n");
-    printf("███████████████████▄▄ ╙╜╨╜╜ª^.▄▄███████▄`╜▀▓▓▓███████▓▓▓▓▓▓██▌╔║███,╣██▓▓▓▓▓█▄░ █\n");
-    printf("██████████████▀▀▀▀▀███^ ╔╔« ▀███▀▀▀▀▀████▄,╓▓▓███████▓▓▓▓████████████████▓▓▓█▌Ü\n");
-    printf("████████████M╗,░,j╗]` ╔U,,,╗, j╗],,,╔░████▌j▓▓████████████████╨░░░░`╨█████▓▓▓█▌\n");
-    printf("████████████⌐]╬D╬╬░K` ║╫╫╬╬╫Ñ ]╬╣╫╬╬M ▐███▌¿╣▓▓▓██████████████φ]╫╫╫░╣█████▓╢╣▌M,\n");
-    printf("████████████⌐]╬╬╬M ,j ╫Ñ╬╬╬╬H ⌂ ╙╫╬╬M ▐████▌/╢▓▓▓██████████████▌▄▄▄█████▓▓╬\"Ü^▄█\n");
-    printf("███████████▀,ª╬╬╬╬Mªº ⌂`\"░``r ªª╣╬╬╬M.▀██████░╚╣▓▓██████████████████████▓╬░ ████\n");
-    printf("██████████½║╬╬╔, ╔╓╗,*╙╝╬╬MÑ*^╔╔╓« «╗] ██████H *▀▓▓▓█████████████████▓▓▓M^, ▀███\n");
-    printf("█████████▌j╟╫╫M,╬▓▓▓▓▄▄▄▄▄▄▄▄▄▓▓▓╬⌂\"╫Ü █████½j]░j░║▀▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▌M░j╬ÑNr`▀█\n");
-    printf("█████████▌j╙╢╫ ░]░╠░░\"░j░]░░░Ñj░]\"¼ ╬H ███▀`Ñ╬╬╬╬Ñ]░░░╙M╣╢╢▓▀▀▀▀▀▀▀M\"╔╬╬╬╣▄▄ß«\n");
-    printf("█████████▌,▄M╟ ▌║Ü▓▓╫▓▌╫#▓#▓╫▌╬M╣░▌ ½ ▐██\",╟╬╬▓╬╬M╫Ñ░░░H`,▄▄▄▄▄▄   j░░]Ñ╫░░░░ÑHµ\n");
-    printf("████████████⌐« ▌║Ü╣Ñ╬╬╬Ñ╬Ñ╬╬╬Ñ╬⌐╫░▌╥▒ ▐██ ╨╝╬╬╬╬Ñ░░░░]^╔▄████████▄▄▄▄\"^^^^^╔▄▄██\n");
-    printf("████████████⌐╫░Ñ║M╟.æ.@╔⌂╔.m.U╔⌂╫░╫╟Ñ ▐████▄▄▄▄▄▄▄▄▄▄███████████████████████████\n");
-    printf("█████████████████████████████████████████████████████████████████████████████████\n");
-    
+void print_win() {
+
+    printf("\nCONGRATULATIONS! YOU WON!\n\n");
+
+    printf("      +%s.\\`\\`|'\\|%s+%s/.|.%s+\n", KRED, KNIL, KRED,KNIL);
+    printf("      %s\\%s+%s`\\ /. `\\%s+%s/. /. %s\n", KRED, KNIL, KRED, KNIL, KRED, KNIL);
+    printf("       %s██████████████%s\n", KYEL, KNIL);
+    printf("     %s▄▄██%s█%s███████████▄▄%s\n", KYEL, KNIL, KYEL, KNIL);
+    printf("     %s█ ██%s██%s██████████ █%s\n", KYEL, KNIL, KYEL, KNIL);
+    printf("     %s█▄██████████████▄█%s\n", KYEL, KNIL);
+    printf("         %s██████████%s\n", KYEL, KNIL);
+    printf("          %s████████%s\n", KYEL, KNIL);
+    printf("            %s████%s\n", KYEL, KNIL);
+    printf("            %s████%s\n", KYEL, KNIL);
+    printf("            %s████%s\n", KYEL, KNIL);
+    printf("        %s▄██████████▄%s\n\n", KYEL, KNIL);
+
+
 }
+
+void print_lose() {
+
+    printf("\n\nYOU LOSE! BETTER LUCK NEXT TIME! :(\n\n");
+
+    printf("        %s`\\`|'/.%s\n", KBLU, KNIL);
+    printf("         %s`\\ /.%s\n", KBLU, KNIL);
+    printf("%s ▄█████████████▄▄▄   █▄▄▄▄█%s\n", KBLU, KNIL);
+    printf("%s ████▌ ▄▌ ▄ ▐ ▐▌ ██▌ ▀▀██▀▀%s\n",KBLU, KNIL);
+    printf("%s ██▄█▌ ▄▌ ▄ ▐ ▐▌ ▀██▄▄▄██%s\n", KBLU, KNIL);
+    printf("%s ▄▄▄▄▄██████████████▀%s\n\n\n", KBLU, KNIL);
+
+}
+
+
