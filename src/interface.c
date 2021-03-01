@@ -6,8 +6,7 @@ void show_menu()
     printf("---------------------\n");
     printf("1. Play\n");
     printf("2. Instructions\n");
-    printf("3. Configurations\n");
-    printf("4. Exit\n");
+    printf("3. Exit\n");
     printf("---------------------\n");
 }
 
@@ -102,11 +101,11 @@ int choose_menu_option()
     while(1){
         if(n){while ((whipeout_stdin = getchar()) != '\n' && whipeout_stdin != EOF){}}
         n++;
-        printf("Which option will you choose? (1/2/3/4)\n");
+        printf("Which option will you choose? (1/2/3)\n");
         printf("> ");
         c = getchar();
         option = atoi(&c);
-        if (option < 1 || option > 4 || ((c = getchar()) != '\n' && c != EOF)) {
+        if (option < 1 || option > 3 || ((c = getchar()) != '\n' && c != EOF)) {
             printf("There's something wrong! Can you type again?\n\n");
         } else {
             /* printf("You've chosen option %d.\n", option); */
