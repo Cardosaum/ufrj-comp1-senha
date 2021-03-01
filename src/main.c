@@ -57,6 +57,9 @@ int main(void) {
                 show_instructions();
                 break;
             case 3:
+                show_credits();
+                break;
+            case 4:
                 game_loop = 0;
                 break;
                     }

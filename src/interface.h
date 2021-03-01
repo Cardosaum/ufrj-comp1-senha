@@ -44,6 +44,12 @@ void print_guesses(char *guesses);
 void show_instructions();
 
 /**
+ * Show the credits. Who are the ones responsibles
+ * for this?
+ */
+void show_credits();
+
+/**
  * Finishes the game and closes the program.
  */
 void exit_game();
@@ -57,6 +63,11 @@ void clear_screen();
  * Prints the ASCII Mastermind game art.
  */
 void print_logo();
+
+/**
+ * Prints the ASCII Dart Vader art.
+ */
+void print_vader();
 
 /**
  * Calculate how many White and Black pins
