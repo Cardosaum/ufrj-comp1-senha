@@ -57,10 +57,6 @@ int main(void) {
                 show_instructions();
                 break;
             case 3:
-                printf("PANIC: We didn't implement this function yet...\n");
-                exit(4);
-                break;
-            case 4:
                 game_loop = 0;
                 break;
                     }

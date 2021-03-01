@@ -19,7 +19,6 @@ void show_board(Board board)
         return;
     }
 
-    printf("MASTER PASS: %s\n", board.password.password);
     printf("┌───────────┬──────┐\n");
     printf("│  Guesses  │ Hint │\n");
     printf("├───────────┼──────┤\n");

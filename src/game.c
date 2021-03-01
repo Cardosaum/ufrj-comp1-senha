@@ -48,12 +48,6 @@ Password generate_password()
     }
     password.password[PL] = '\0';
 
-    /* GRYC */
-    /* password.password[0] = 'G'; */
-    /* password.password[1] = 'R'; */
-    /* password.password[2] = 'Y'; */
-    /* password.password[3] = 'C'; */
-    printf("PASS: %s\n", password.password);
     return password;
 }
 
@@ -195,8 +189,7 @@ bool check_tries(const Board game_board){
             break;
         }
     }
-    /* clear_screen(); */
-    /* printf("Still have %d tries. \n\n", BOARD_SIZE - i); */
+    clear_screen();
 
     return still_have_tries;
 
@@ -205,7 +198,6 @@ bool check_tries(const Board game_board){
 int start_game(){
 
     Board game_board;
-    Guess player_guess;
     int board_pos = 0;
     int after_game_decision = 0;
     int correct = 0;
@@ -216,7 +208,6 @@ int start_game(){
 
     while(check_tries(game_board) && (correct = calc_pins(game_board.rounds[board_pos-1].player_password.password, game_board.password.password, 'W')) != PL)
     {
-        /* clear_screen(); */
         show_board(game_board);
         if (input_password(&game_board.rounds[board_pos], game_board)) {
             board_pos++;
