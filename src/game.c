@@ -267,7 +267,7 @@ int start_game(){
     clear_screen();
     initialize_board(&game_board);
 
-    while(check_tries(game_board) && (correct = calc_pins(game_board.rounds[board_pos-1].player_password.password, game_board.password.password, 'W')) != PL)
+    while((correct = calc_pins(game_board.rounds[board_pos-1].player_password.password, game_board.password.password, 'W')) != PL && check_tries(game_board))
     {
         show_board(game_board);
         if (input_password(&game_board.rounds[board_pos], game_board)) {
