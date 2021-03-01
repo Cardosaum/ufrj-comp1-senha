@@ -129,6 +129,10 @@ void show_instructions()
             
     printf("- Each time the player tries to guess and fails, both the number of right answers and tries\n" 
            "left will appear on screen.\n\n");
+
+    printf("- The player hints will be displayed in the Hints section, available as B or W.\n");
+    printf("%sB%s: Some of the colors is correct, but in the wrong position.\n",KBLK,KNIL);
+    printf("%sW%s: Some of the colors is correct and in the right position\n\n",KWHT,KNIL);
             
     printf("- The player loses the game if there are no more tries left.\n\n");
     
