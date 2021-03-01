@@ -126,6 +126,8 @@ bool input_password(Guess *player_guess, Board game_board)
         }
         printf("%c].\n", COLORS[l-1]);
         printf("\n");
+        printf("Press <enter> to continue.\n");
+        while ((whipeout_stdin = getchar()) != '\n' && whipeout_stdin != EOF){}
         return false;
     }
 
@@ -230,6 +232,7 @@ int finish_game(Board board){
 
     clear_screen();
 
+    show_board(board);
     if(board.won == 1){
         printf("CONGRATULATIONS! YOU WON!\n\n");
     }
